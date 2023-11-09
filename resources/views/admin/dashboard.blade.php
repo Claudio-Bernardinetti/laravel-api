@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -18,12 +18,17 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div class="py-4">
+                        <a href="{{route('admin.posts.index')}}" class="btn btn-secondary">
+                            view
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+@endsection
 
 {{-- <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
@@ -80,5 +85,5 @@
     </div>
   </div>
   </header> --}}
-  @endsection
+  
   
