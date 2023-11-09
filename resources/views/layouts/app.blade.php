@@ -22,20 +22,15 @@
 
 <body>
 
-    @include('partials.sidebar')
-    
-     <div id="app">
-
-
-        <nav class="navbar navbar-expand-md sticky-top shadow-sm navbar-light bg-dark">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
+    <nav class="navbar navbar-expand-md sticky-top shadow-sm navbar-light  bg-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <div class="logo_laravel">
                         
-                    </div>
+                </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
-
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -84,11 +79,19 @@
                 </div>
             </div>
         </nav>
-
-        <main class="">
-            @yield('content')
-        </main>
-    </div> 
+        <div id="app" class="row overflow-x-hidden ">
+            <div class=" col-md-3 vh-100 bg-dark ">
+                <div class="d-grid gap-2">
+                <a href="{{route('admin.dashboard')}}" class="btn btn-light rounded-0 mx-2">Dashboard</a>
+                <a href="{{route('admin.posts.index')}}" class="btn btn-light rounded-0 mx-2" >Projects</a>
+                </div>
+            </div>
+        
+            <main class="col-md-9  g-0">
+                @include('admin.partials.sidebar')
+                @yield('content')
+            </main>
+        </div> 
 </body>
 
 </html>
