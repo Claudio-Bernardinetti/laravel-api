@@ -1,12 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="overflow-hidden">
   <div class="row">
-    <div class="col-md-3 bg-dark">
-      
-      <button>Dashboard</button>
-    </div>
+    
     <div class="col-md-9">
       
       <div class="container">
@@ -26,10 +23,7 @@
                           @endif
       
                           {{ __('You are logged in!') }}
-                          <div class="py-4">
-                              <a href="{{route('admin.posts.index')}}" class="btn btn-secondary">
-                                  view
-                              </a>
+                          
                           </div>
                       </div>
                   </div>

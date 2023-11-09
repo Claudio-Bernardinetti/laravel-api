@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1>
-        All Posts
+        All Posts index
     </h1>
 
     <table class="table">
@@ -29,7 +29,9 @@
                     {{$post->slug}}
                 </td>
                 <td>
-                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-primary">Dettagli</a>
+                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-primary">View</a>
+                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-success">Edit</a>
+                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             @endforeach

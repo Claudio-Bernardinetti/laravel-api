@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <h1 class="py-4">Edit Post number: {{$post->id}}</h1>
+    <h1 class="py-4">Edit Post / edit / number: {{$post->id}}</h1>
     
      {{-- @include('partials.errors')  --}}
 

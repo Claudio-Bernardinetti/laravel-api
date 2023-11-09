@@ -6,6 +6,10 @@
 {{-- <button type="submit" class="btn btn-primary">
     Save
 </button> --}}
+
+<h1>
+    create
+</h1>
 <div class="container my-2">
 
     @if ($errors->any())
