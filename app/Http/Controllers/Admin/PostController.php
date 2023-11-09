@@ -74,7 +74,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Posts $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         $val_data = $request->validate([
             'title' => 'required|min:3|max:50',
@@ -101,7 +101,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Posts $post)
+    public function destroy(Post $post)
     {
         if (!is_null($post->thumb)) {
             Storage::delete($post->thumb);
