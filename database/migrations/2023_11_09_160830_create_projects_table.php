@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        
             Schema::create('projecs', function (Blueprint $table) {
                 $table->id();
                 $table->string('cover_image')->nullable();
@@ -19,9 +19,10 @@ return new class extends Migration
                 $table->string('title');
                 $table->string('slug');
                 $table->text('content')->nullable();
+                $table->text('description')->nullable();
                 $table->timestamps();
             });
-        });
+      
     }
 
     /**

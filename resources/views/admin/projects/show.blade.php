@@ -12,13 +12,13 @@
     
     <ul>
         <li>
-            {{$post->id}}
+            {{$project->id}}
         </li>
         <li>
-            {{$post->title}}
+            {{$project->title}}
         </li>
         <li>
-            {{$post->content}}
+            {{$project->content}}
         </li>
     </ul>
 

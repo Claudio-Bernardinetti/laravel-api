@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1>
-        All Posts index
+        All Projects index
     </h1>
 
     <table class="table">
@@ -17,21 +17,21 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($posts as $post)
+            @foreach ($projects as $project)
             <tr>
                 <td>
-                    <img src="{{$post->cover_image}}" alt="" width="100">
+                    <img src="{{$project->cover_image}}" alt="" width="100">
                 </td>
                 <td>
-                    {{$post->title}}
+                    {{$project->title}}
                 </td>
                 <td>
-                    {{$post->slug}}
+                    {{$project->slug}}
                 </td>
                 <td>
-                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-primary">View</a>
-                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-success">Edit</a>
-                    <a href="{{route('admin.posts.show',$post->slug)}}" class="btn btn-danger">Delete</a>
+                    <a href="{{route('admin.projects.show',$project->slug)}}" class="btn btn-primary">View</a>
+                    <a href="{{route('admin.projects.show',$project->slug)}}" class="btn btn-success">Edit</a>
+                    <a href="{{route('admin.projects.show',$project->slug)}}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             @endforeach
