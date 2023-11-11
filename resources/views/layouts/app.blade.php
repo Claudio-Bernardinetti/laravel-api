@@ -79,19 +79,19 @@
                 </div>
             </div>
         </nav>
-        <div id="app" class="row overflow-x-hidden ">
+        {{-- <div id="app" class="row overflow-x-hidden ">
             <div class=" col-md-3 vh-100 bg-dark ">
                 <div class="d-grid gap-2">
                 <a href="{{route('admin.dashboard')}}" class="btn btn-light rounded-0 mx-2">Dashboard</a>
                 <a href="{{route('admin.projects.index')}}" class="btn btn-light rounded-0 mx-2" >Projects</a>
                 </div>
-            </div>
+            </div> 
+        </div> --}}
         
-            <main class="col-md-9  g-0">
-                @include('admin.partials.sidebar')
+            <main>
+                {{-- @include('admin.partials.sidebar') --}}
                 @yield('content')
             </main>
-        </div> 
 </body>
 
 </html>

@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+
+{{-- <div class="container"> --}}
   <div class="row">
+    <div class="col-md-3">
+      @include('admin.partials.sidebar')
+    </div>
+      
     
     <div class="col-md-9">
-      
-      <div class="container">
           <h2 class="fs-4 text-secondary my-4">
               {{ __('Welcome Claudio !') }}
           </h2>
@@ -30,8 +33,8 @@
               </div>
           </div>
       </div>
-    </div>
-</div>
+  </div>
+
     
 </div>
 @endsection

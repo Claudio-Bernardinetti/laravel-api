@@ -23,7 +23,7 @@
     @endif
     
 
-    <form action="{{route('projects.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
 
         <!-- // Attention to Cross site request forgery attacks -->
         @csrf
@@ -38,7 +38,7 @@
 
         <div class="mb-3">
             <label for="price" class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Pescription Project" value="${{old('description', $project->description)}}">
+            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Pescription Project" value="${{old('description')}}">
             <small id="descriptionHelper" class="form-text text-muted">Type the description here</small>
             @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -53,7 +53,7 @@
         </div>
         <div class="col-12 mb-3">
             <button type="submit" class="btn btn-primary">Create</button>
-            <a href="{{route('projects.index')}}" class="btn btn-dark">Cancel</a>
+            <a href="{{route('admin.projects.index')}}" class="btn btn-dark">Cancel</a>
         </div>
 
     </form>

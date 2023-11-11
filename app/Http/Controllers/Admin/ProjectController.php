@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -16,8 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $posts = Project::all();
-
+        $projects = DB::table('projects')->paginate(5);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -59,7 +59,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $post)
+    public function show(Project $project)
     {
         return view('admin.projects.show', compact('project'));
     }
@@ -86,7 +86,7 @@ class ProjectController extends Controller
 
         /* $data = $request->all(); */
 
-        if ($request->has('cover_image') && $project->thumb) {
+        if ($request->has('cover_image') && $project->cover_image) {
             Storage::delete($project->cover_image);
             $file_path = Storage::put('storage_img', $request->cover_image);
             $val_data['cover_image'] = $file_path;
@@ -104,11 +104,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        if (!is_null($project->thumb)) {
-            Storage::delete($project->thumb);
+        if (!is_null($project->cover_image)) {
+            Storage::delete($project->cover_image);
         }
 
         $project->delete();
-        return to_route('projects.index')->with('message', 'Item successfully deleted!');
+        return to_route('admin.projects.index')->with('message', 'Item successfully deleted!');
     }
 }

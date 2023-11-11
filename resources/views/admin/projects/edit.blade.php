@@ -9,7 +9,7 @@
     
      {{-- @include('partials.errors')  --}}
 
-    <form action="{{route('projects.update', $project)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
 
         <!-- // Attention to Cross site request forgery attacks -->
         @csrf
@@ -48,6 +48,7 @@
         <button type="submit" class="btn btn-primary">
             Update
         </button>
+        <a class="btn btn-success " href="{{route('admin.projects.index', $project->id)}}" role="button">Go Back</a>
 
 
     </form>
