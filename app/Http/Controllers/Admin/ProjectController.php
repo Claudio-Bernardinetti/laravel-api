@@ -34,26 +34,20 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //dd($request->all());
+        $request->validated();
 
-        // validate the user input
-        $val_data = $request->validated();
-        //dd($val_data);
+        $data = $request->all();
+        $slug  = Str::slug($request->all()["title"], '-');
+        $data += ['slug' => $slug];
 
-        // generate the post slug
-        $val_data['slug'] = Str::slug($request->title, '-');
-
-
-        // add the cover image if passed in the request
-        if ($request->has('cover_image')) {
-            $path = Storage::put('posts_images', $request->cover_image);
-            $val_data['cover_image'] = $path;
+        if ($request->has('preview')) {
+            $file_path = Storage::put('projects_previews', $request->preview);
+            $data['preview'] = $file_path;
         }
 
-        //dd($val_data);
-        // create the new article
-        Project::create($val_data);
-        return to_route('admin.projects.index')->with('message', 'Post Created successfully');
+        Project::create($data);
+
+        return to_route('admin.projects.index')->with('message', 'project successfully created!');
     }
 
     /**
@@ -77,26 +71,24 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $val_data = $request->validate([
-            'title' => 'required|min:3|max:50',
-            'cover_image' => 'nullable',
-            'content' => 'nullable|image|max:600'
+        $request->validated();
 
-        ]);
+        $data = $request->all();
+        $slug  = Str::slug($request->all()["title"], '-');
+        $data += ['slug' => $slug];
 
-        /* $data = $request->all(); */
+        if ($request->has('preview')) {
+            $file_path = Storage::put('projects_previews', $request->preview);
+            $data['preview'] = $file_path;
 
-        if ($request->has('cover_image') && $project->cover_image) {
-            Storage::delete($project->cover_image);
-            $file_path = Storage::put('storage_img', $request->cover_image);
-            $val_data['cover_image'] = $file_path;
+            if ($project->preview) {
+                Storage::delete($project->preview);
+            }
         }
 
-        //dd($file_path);
-        //dd($val_data);
+        $project->update($data);
 
-        $project->update($val_data);
-        return to_route('projects.index')->with('message', 'Item successfully updated!');
+        return to_route('admin.projects.index')->with('message', 'project successfully updated!');
     }
 
     /**

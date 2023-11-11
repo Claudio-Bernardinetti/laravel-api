@@ -33,7 +33,7 @@
 
         </div>
 
-        <div class="d-flex gap-3">
+        <div class="d-flex">
             <div>
                 <img width="200" src="{{asset('storage/app/public/storage_img' . $project->cover_image)}}" alt="">
             </div>

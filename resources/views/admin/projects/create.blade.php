@@ -7,10 +7,10 @@
     Save
 </button> --}}
 
-<h1>
-    create
-</h1>
 <div class="container my-2">
+    <h1>
+        create
+    </h1>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -29,7 +29,7 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is_invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="dcComics" maxlength="100" require value="{{old('title')}}">
+            <input type="text" class="form-control @error('title') is_invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Title Project" maxlength="100" require value="{{old('title')}}">
             <small id="titleHelper" class="form-text text-muted">Type the Title here</small>
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -38,7 +38,7 @@
 
         <div class="mb-3">
             <label for="price" class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Pescription Project" value="${{old('description')}}">
+            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Description Project" require value="{{old('description')}}">
             <small id="descriptionHelper" class="form-text text-muted">Type the description here</small>
             @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -53,7 +53,7 @@
         </div>
         <div class="col-12 mb-3">
             <button type="submit" class="btn btn-primary">Create</button>
-            <a href="{{route('admin.projects.index')}}" class="btn btn-dark">Cancel</a>
+            <a href="{{route('admin.projects.index')}}" class="btn btn-success">Go Back</a>
         </div>
 
     </form>

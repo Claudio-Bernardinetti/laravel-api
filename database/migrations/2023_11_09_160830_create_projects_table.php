@@ -14,7 +14,7 @@ return new class extends Migration
             Schema::create('projects', function (Blueprint $table) {
                 $table->id();
                 $table->string('title');
-                $table->string('github_link');
+                $table->string('github_link')->nullable();
                 $table->string('internet_link')->nullable();
                 $table->string('cover_image')->nullable();
                 $table->string('slug');
@@ -29,6 +29,16 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('projects', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('github_link');
+            $table->string('internet_link')->nullable();
+            $table->string('cover_image')->nullable();
+            $table->string('slug');
+            $table->text('content')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
     }
 };

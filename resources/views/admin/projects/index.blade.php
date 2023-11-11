@@ -36,7 +36,10 @@
             @foreach ($projects as $project)
             <tr>
                 <td>
-                    <img src="{{$project->cover_image}}" alt="" width="100">
+                    <div class="card-header card_header">
+                        <img class="card-img-top" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage_img/' . $project->cover_image) }}" width="100px" alt="{{ $project->title }}">
+                        {{-- <p class="card-text">{{ $comic->description }}</p> --}}
+                    </div>
                 </td>
                 <td>
                     {{$project->id}}
@@ -44,6 +47,11 @@
                 <td>
                     {{$project->title}}
                 </td>
+                <td>
+                    {{-- <a href="{{route($project->github_link)}}"></a> --}}
+                    {{$project->github_link}} <br>
+                    {{$project->internet_link}}
+                  </td>
                 <td>
                     {{$project->slug}}
                 </td>
