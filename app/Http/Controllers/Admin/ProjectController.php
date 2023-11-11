@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = DB::table('projects')->paginate(5);
+        $projects = DB::table('projects')->paginate(7);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -40,9 +40,9 @@ class ProjectController extends Controller
         $slug  = Str::slug($request->all()["title"], '-');
         $data += ['slug' => $slug];
 
-        if ($request->has('preview')) {
-            $file_path = Storage::put('projects_previews', $request->preview);
-            $data['preview'] = $file_path;
+        if ($request->has('cover_image')) {
+            $file_path = Storage::put('storage_img', $request->cover_image);
+            $data['cover_image'] = $file_path;
         }
 
         Project::create($data);
@@ -77,12 +77,12 @@ class ProjectController extends Controller
         $slug  = Str::slug($request->all()["title"], '-');
         $data += ['slug' => $slug];
 
-        if ($request->has('preview')) {
-            $file_path = Storage::put('projects_previews', $request->preview);
-            $data['preview'] = $file_path;
+        if ($request->has('cover_image')) {
+            $file_path = Storage::put('storage_img', $request->cover_image);
+            $data['cover_image'] = $file_path;
 
             if ($project->preview) {
-                Storage::delete($project->preview);
+                Storage::delete($project->cover_image);
             }
         }
 

@@ -22,7 +22,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md sticky-top shadow-sm navbar-light  bg-dark">
+    <nav class="navbar navbar-expand-md navbar-light  bg-dark">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <div class="logo_laravel">

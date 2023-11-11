@@ -35,11 +35,9 @@
         <tbody>
             @foreach ($projects as $project)
             <tr>
-                <td>
-                    <div class="card-header card_header">
-                        <img class="card-img-top" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage_img/' . $project->cover_image) }}" width="100px" alt="{{ $project->title }}">
-                        {{-- <p class="card-text">{{ $comic->description }}</p> --}}
-                    </div>
+                <td> 
+                    <img class="card-img-top" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
+                    {{-- <p class="card-text">{{ $project->description }}</p> --}} 
                 </td>
                 <td>
                     {{$project->id}}
@@ -48,16 +46,15 @@
                     {{$project->title}}
                 </td>
                 <td>
-                    {{-- <a href="{{route($project->github_link)}}"></a> --}}
-                    {{$project->github_link}} <br>
-                    {{$project->internet_link}}
+                  <a href="{{$project->github_link}}" target="_blank">{{$project->github_link}}</a> <br>
+                  <a href="{{$project->internet_link}}" target="_blank">{{$project->internet_link}}</a>
                   </td>
                 <td>
                     {{$project->slug}}
                 </td>
                 <td>
                     <a href="{{route('admin.projects.show',$project->id)}}" class="btn btn-primary">View</a>
-                    <a href="{{route('admin.projects.edit',$project->id)}}" class="btn btn-success">Edit</a>
+                    <a href="{{route('admin.projects.edit',$project->id)}}" class="btn btn-success my-2">Edit</a>
                     
                 </td>
             <td>
@@ -65,7 +62,7 @@
                 @csrf
                 @method('DELETE')
               
-                <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal_{{$project->id}}">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_{{$project->id}}">
                   Delete
                 </button>
               

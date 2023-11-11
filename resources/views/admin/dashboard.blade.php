@@ -9,7 +9,7 @@
     </div>
       
     
-    <div class="col-md-9">
+    <div class="col-md-9 vh-100">
           <h2 class="fs-4 text-secondary my-4">
               {{ __('Welcome Claudio !') }}
           </h2>

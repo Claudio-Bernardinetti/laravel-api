@@ -9,7 +9,7 @@
 
 <div class="container my-2">
     <h1>
-        create
+        Create new Project
     </h1>
 
     @if ($errors->any())
