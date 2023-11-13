@@ -41,7 +41,7 @@ class ProjectController extends Controller
         $val_data = $request->all();
         
         // generate the post slug
-        $val_data['slug'] = Str::slug($request->github_link, '-');
+        $val_data['slug'] = Str::slug($request->slug, '-');
         //$val_data = ($request->description);
         //dd($val_data);
         
@@ -56,7 +56,7 @@ class ProjectController extends Controller
         
         // create the new article
         Project::create($val_data);
-        //dd($val_data);
+        dd($val_data);
         return to_route('admin.projects.index')->with('message', 'Post Created successfully');
     }
     /**

@@ -13,7 +13,7 @@
         <h1 >Show selected Project</h1>
           <h5>ID: {{$project->id}}</h5>
           <h6 class="text-muted"><strong>Title: </strong>{{$project->title}}</h6>
-          <p><strong>Description: </strong>{{$project->content}}</p>
+          <p><strong>Description: </strong>{{$project->description}}</p>
           <a class="btn btn-primary mt-4" href="{{route('admin.projects.index', $project->id)}}" role="button">Go Back</a>
       </div>
     </div>

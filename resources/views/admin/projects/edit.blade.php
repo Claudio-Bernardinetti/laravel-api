@@ -24,6 +24,15 @@
         </div>
 
         <div class="mb-3">
+            <label for="link" class="form-label">Links</label>
+            <input type="url" class="form-control @error('link') is-invalid @enderror" name="link" id="link" aria-describedby="helpId" placeholder="https://example.com" maxlength="100" required value="{{old('link')}}">
+            <small id="linkHelper" class="form-text text-muted">Type the URL here</small>
+            @error('link')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror         
+        </div>
+
+        <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3"> {{old('description', $project->description)}}</textarea>
             <small id="HelperDescription" class="text-muted">Type the description here</small>

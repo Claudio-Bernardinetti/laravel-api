@@ -37,10 +37,10 @@
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">Links</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Title Project" maxlength="100" require value="{{old('title')}}">
-            <small id="titleHelper" class="form-text text-muted">Type the Title here</small>
-            @error('title')
+            <label for="link" class="form-label">Links</label>
+            <input type="url" class="form-control @error('link') is-invalid @enderror" name="link" id="link" aria-describedby="helpId" placeholder="https://example.com" maxlength="100" required value="{{old('link')}}">
+            <small id="linkHelper" class="form-text text-muted">Type the URL here</small>
+            @error('link')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror         
         </div>
