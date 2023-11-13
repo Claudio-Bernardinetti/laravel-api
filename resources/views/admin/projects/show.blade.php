@@ -6,7 +6,8 @@
 <div class="container bg-body-tertiary p-3">
   <div class="row m-5">
     <div class="col-md-6">
-        <img class="img-fluid" src="{{$project->cover_image}}" alt="Card image cap">
+        <img class="img-fluid" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="Card image cap">
+        {{-- <img src="{{ asset('storage/app/public/storage_img' . $project->cover_image) }}" alt="{{$project->cover_image}}"> --}}
     </div>
     <div class="col-md-6">
         <h1 >Show selected Project</h1>

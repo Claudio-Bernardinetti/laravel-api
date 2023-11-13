@@ -20,37 +20,45 @@
     
         
         
-        <table class="table ">
+        <table class="table vh-100 ">
             <h1>
                 All Projects index
             </h1>
         <thead>
           <tr>
             <th scope="col">Cover</th>
+            <th scope="col">ID</th>
             <th scope="col">Title</th>
-            <th scope="col">Name</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Action</th>
+            <th scope="col">Descripion</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($projects as $project)
             <tr>
                 <td> 
-                    <img class="card-img-top" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
-                    {{-- <p class="card-text">{{ $project->description }}</p> --}} 
+                  @if ($project->cover_image)
+                  <img width="100" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
+                  @else
+                  N/A
+                  @endif 
                 </td>
                 <td>
+                  ID:
                     {{$project->id}}
                 </td>
                 <td>
+                  TITLE:
                     {{$project->title}}
                 </td>
                 <td>
+                  Links:
                   <a href="{{$project->github_link}}" target="_blank">{{$project->github_link}}</a> <br>
                   <a href="{{$project->internet_link}}" target="_blank">{{$project->internet_link}}</a>
                   </td>
                 <td>
-                    {{$project->slug}}
+                  DESCRIPTION:
+                    {{$project->description}}
                 </td>
                 <td>
                     <a href="{{route('admin.projects.show',$project->id)}}" class="btn btn-primary">View</a>

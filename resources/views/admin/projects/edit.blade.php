@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <h1 class="py-4">Edit Project / edit / number: {{$project->id}}</h1>
+    <h1 class="py-4">Edit Project ID: {{$project->id}}</h1>
     
      {{-- @include('partials.errors')  --}}
 
@@ -16,7 +16,7 @@
         @method('PUT')
         <div class="mb-3">
             <label for="name" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Projects image" value="{{old('title', $project->title)}}">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Projects image" value="{{old('title', $project->title)}}">
             <small id="nameHelper" class="form-text text-muted">Type the name here</small>
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -24,9 +24,9 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Pescription Project" value="${{old('description', $project->description)}}">
-            <small id="descriptionHelper" class="form-text text-muted">Type the description here</small>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3"> {{old('description', $project->description)}}</textarea>
+            <small id="HelperDescription" class="text-muted">Type the description here</small>
             @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror  
@@ -35,7 +35,7 @@
 
         <div class="d-flex">
             <div>
-                <img width="200" src="{{asset('storage/app/public/storage_img' . $project->cover_image)}}" alt="">
+                <img class="card-img-top" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Update Cover Image</label>

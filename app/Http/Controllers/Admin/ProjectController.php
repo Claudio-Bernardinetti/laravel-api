@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -34,22 +35,27 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $request->validated();
+        //dd($request->all());
 
-        $data = $request->all();
-        $slug  = Str::slug($request->all()["title"], '-');
-        $data += ['slug' => $slug];
+        // validate the user input
+        $val_data = $request->validated();
+        //dd($val_data);
 
+        // generate the post slug
+        $val_data['slug'] = Str::slug($request->github_link, '-');
+
+
+        // add the cover image if passed in the request
         if ($request->has('cover_image')) {
             $file_path = Storage::put('storage_img', $request->cover_image);
-            $data['cover_image'] = $file_path;
+            $val_data['cover_image'] = $file_path;
         }
 
-        Project::create($data);
-
-        return to_route('admin.projects.index')->with('message', 'project successfully created!');
+        //dd($val_data);
+        // create the new article
+        Project::create($val_data);
+        return to_route('admin.projects.index')->with('message', 'Post Created successfully');
     }
-
     /**
      * Display the specified resource.
      */
@@ -73,13 +79,16 @@ class ProjectController extends Controller
     {
         $request->validated();
 
+        
+
         $data = $request->all();
         $slug  = Str::slug($request->all()["title"], '-');
         $data += ['slug' => $slug];
 
+
         if ($request->has('cover_image')) {
             $file_path = Storage::put('storage_img', $request->cover_image);
-            $data['cover_image'] = $file_path;
+            $data['cover_image'] = asset($file_path);
 
             if ($project->preview) {
                 Storage::delete($project->cover_image);
