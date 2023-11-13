@@ -54,6 +54,22 @@
             @enderror         
         </div>
 
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Types</label>
+            <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+                <option selected disabled>Select a Type</option>
+                <option value="">No Type</option>
+                @forelse($types as $type)
+                <option value="{{$type->id}}" {{$type->id == old('type_id') ? 'selected' : ''}}>{{$type->name}}</option>
+                @empty
+
+                @endforelse
+            </select>
+        </div>
+        @error('type_id')
+            <p class="text-danger">{{$message}}</p>
+        @enderror
+
 
 
         

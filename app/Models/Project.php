@@ -16,7 +16,8 @@ class Project extends Model
         'internet_link', 
         'description', 
         'slug',
-        'cover_image'
+        'cover_image',
+        'type_id'
     ];
 
     public function type(): BelongsTo
