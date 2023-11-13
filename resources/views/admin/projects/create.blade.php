@@ -37,8 +37,17 @@
         </div>
 
         <div class="mb-3">
+            <label for="name" class="form-label">Links</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Title Project" maxlength="100" require value="{{old('title')}}">
+            <small id="titleHelper" class="form-text text-muted">Type the Title here</small>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror         
+        </div>
+
+        <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control @error('title') is-invalid @enderror" name="description" id="description" rows="3"> {{old('description')}}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3"> {{old('description')}}</textarea>
             <small id="HelperDescription" class="text-muted">Type the description here</small>
             @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>

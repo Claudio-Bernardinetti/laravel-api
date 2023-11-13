@@ -38,11 +38,13 @@ class ProjectController extends Controller
         //dd($request->all());
 
         // validate the user input
-        $val_data = $request->validated();
-        //dd($val_data);
-
+        $val_data = $request->all();
+        
         // generate the post slug
         $val_data['slug'] = Str::slug($request->github_link, '-');
+        //$val_data = ($request->description);
+        //dd($val_data);
+        
 
 
         // add the cover image if passed in the request
@@ -51,9 +53,10 @@ class ProjectController extends Controller
             $val_data['cover_image'] = $file_path;
         }
 
-        //dd($val_data);
+        
         // create the new article
         Project::create($val_data);
+        //dd($val_data);
         return to_route('admin.projects.index')->with('message', 'Post Created successfully');
     }
     /**
@@ -81,22 +84,23 @@ class ProjectController extends Controller
 
         
 
-        $data = $request->all();
-        $slug  = Str::slug($request->all()["title"], '-');
-        $data += ['slug' => $slug];
+        $val_data = $request->all();
+        $slug  = Str::slug($request->all()["description"], '-');
+        $val_data += ['slug' => $slug];
 
 
         if ($request->has('cover_image')) {
             $file_path = Storage::put('storage_img', $request->cover_image);
-            $data['cover_image'] = asset($file_path);
+            $val_data['cover_image'] = asset($file_path);
 
             if ($project->preview) {
                 Storage::delete($project->cover_image);
             }
         }
 
-        $project->update($data);
+        $project->update($val_data);
 
+        //dd($val_data);
         return to_route('admin.projects.index')->with('message', 'project successfully updated!');
     }
 
