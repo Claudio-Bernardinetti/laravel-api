@@ -9,25 +9,22 @@
     </div>
       
     
-    <div class="col-md-9 vh-100">
+    <div class="col-md-8 justify-content-center vh-100">
           <h2 class="fs-4 text-secondary my-4">
               {{ __('Welcome Claudio !') }}
           </h2>
-            <div class="row justify-content-center">
+          @if (session('status'))
+          <div class="alert alert-success" role="alert">
+              {{ session('status') }}
+          </div>
+          @endif
+          
+          <div class="row justify-content-center">
               <div class="col">
                   <div class="card">
-                      <div class="card-header">{{ __('User Dashboard') }}</div>
-      
                       <div class="card-body">
-                          @if (session('status'))
-                          <div class="alert alert-success" role="alert">
-                              {{ session('status') }}
-                          </div>
-                          @endif
-      
-                          {{ __('You are logged in!') }}
-                          
-                          </div>
+                          <h3>Total Projects</h3>
+                          <strong>{{$total_projects}}</strong>                    
                       </div>
                   </div>
               </div>
