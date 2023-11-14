@@ -29,10 +29,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $projects = Project::all();
         $types = Type::all();
         $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types', 'technologies'));
+        return view('admin.projects.create', compact('projects', 'types', 'technologies'));
     }
 
     /**
@@ -80,6 +81,7 @@ class ProjectController extends Controller
     {
         $types = Type::all();
         $technologies = Technology::all();
+        //dd($types);
         return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
@@ -109,9 +111,12 @@ class ProjectController extends Controller
         $project->update($val_data);
 
         if ($request->has('technologies')) {
-            dd($val_data['technologies']);
             $project->technologies()->sync($val_data['technologies']);
-        }
+        } 
+        dd($val_data);
+        /* else {
+            $project->technologies()->detach();
+        } */
 
         //dd($val_data);
         return to_route('admin.projects.index')->with('message', 'project successfully updated!');

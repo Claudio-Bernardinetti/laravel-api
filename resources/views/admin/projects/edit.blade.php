@@ -89,7 +89,7 @@
                 <option selected disabled>Select a Type</option>
                 <option value="">No Technology Selected</option>
                 @forelse($technologies as $technology)
-                <option value="{{$technology->id}}" {{$type->id == old('technology_id', $project->type_id) ? 'selected' : ''}}>{{$technology->name}}</option>
+                <option value="{{$technology->id}}" {{$technology->id == old('technology_id', $project->type_id) ? 'selected' : ''}}>{{$technology->name}}</option>
                 @empty
 
                 @endforelse

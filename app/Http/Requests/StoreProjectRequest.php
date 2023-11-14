@@ -12,7 +12,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::id() === 1;
+        return true;
     }
 
     /**
@@ -25,7 +25,12 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => ['required', 'min:5', 'max:50', 'unique:projects'],
             'content' => ['nullable'],
-            'cover_image' => ['nullable', 'image', 'max:800']
+            'cover_image' => ['nullable', 'image', 'max:800'],
+            'type_id' => ['nullable', 'exists:types,id'],
+            'technologies' => ['nullable', 'exists:technologies,id'],
+            /* 'github_link' => 'required|unique:projects,github_link|max:255',
+            'internet_link' => 'nullable|unique:projects,internet_link|max:255', */
+            'description' => ['nullable']
         ];
     }
 }

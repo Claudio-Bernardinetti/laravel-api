@@ -13,7 +13,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::id() === 1; // true
+        return true; // true
     }
 
     /**
@@ -24,11 +24,14 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'min:5', 'max:50', Rule::unique('projects')->ignore($this->project)],
+            'title' => ['required', 'min:5', 'max:50', Rule::unique('projects')->ignore($this->post)],
             'content' => ['nullable'],
             'cover_image' => ['nullable', 'image', 'max:800'],
             'github_link' => ['nullable'] ,
-            'google_link' => ['nullable'] ,
+            'internet_link' => ['nullable'] ,
+            'type_id' => ['nullable', 'exists:types,id'],
+            'technologies' => ['nullable', 'exists:technologies,id'],
+            'description' => ['nullable']
         ];
     }
 }
