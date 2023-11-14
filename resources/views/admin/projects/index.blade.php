@@ -3,11 +3,11 @@
 @section('content')
 
 
-    <div class="row">
-        <div class="col-md-2">
+    <div class="row m-0">
+        <div class="col-md-2 p-0">
           @include('admin.partials.sidebar')
         </div>
-       <div class="col-md-10">
+       <div class="col-md-10 m-0">
          <div class="d-flex justify-content-between align-items-center py-2"> 
          </div>
     

@@ -70,7 +70,7 @@
 
         <div class="d-flex">
             <div>
-                <img class="card-img-top" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
+                <img class="card-img-top" height="100" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Update Cover Image</label>
