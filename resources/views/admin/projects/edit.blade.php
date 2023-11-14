@@ -79,9 +79,11 @@
             @error('technologies')
             <div class="text-danger">{{$message}}</div>
             @enderror
-        </div> --}}
+        </div>
+ --}}
+        
 
-        <div class="mb-3">
+         <div class="mb-3">
             <label for="technology_id" class="form-label">Technology</label>
             <select class="form-select @error('technology_id') is-invalid @enderror" name="technology_id" id="technology_id">
                 <option selected disabled>Select a Type</option>
@@ -95,7 +97,7 @@
         </div>
         @error('technology_id')
             <p class="text-danger">{{$message}}</p>
-        @enderror
+        @enderror 
         
 
         <div class="mb-3">
