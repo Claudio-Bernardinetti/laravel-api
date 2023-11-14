@@ -86,10 +86,10 @@
          <div class="mb-3">
             <label for="technology_id" class="form-label">Technology</label>
             <select class="form-select @error('technology_id') is-invalid @enderror" name="technology_id" id="technology_id">
-                <option selected disabled>Select a Type</option>
+                {{-- <option selected disabled>Select a Type</option> --}}
                 <option value="">No Technology Selected</option>
                 @forelse($technologies as $technology)
-                <option value="{{$technology->id}}" {{$technology->id == old('technology_id', $project->type_id) ? 'selected' : ''}}>{{$technology->name}}</option>
+                <option value="{{$technology->id}}" {{$type->id == old('technology_id', $project->type_id) ? 'selected' : ''}}>{{$technology->name}}</option>
                 @empty
 
                 @endforelse

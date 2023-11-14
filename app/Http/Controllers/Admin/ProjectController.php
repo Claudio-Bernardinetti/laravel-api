@@ -62,7 +62,7 @@ class ProjectController extends Controller
         
         // create the new article
         $project = Project::create($val_data);
-        $project->technologies()->attach($request->technologies);
+        /* $project->technologies()->attach($request->technologies); */
         //dd($val_data);
         return to_route('admin.projects.index')->with('message', 'Post Created successfully');
     }
@@ -113,7 +113,7 @@ class ProjectController extends Controller
         if ($request->has('technologies')) {
             $project->technologies()->sync($val_data['technologies']);
         } 
-        dd($val_data);
+        //dd($val_data);
         /* else {
             $project->technologies()->detach();
         } */
