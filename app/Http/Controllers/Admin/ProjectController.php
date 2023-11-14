@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -29,8 +30,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -58,7 +60,8 @@ class ProjectController extends Controller
 
         
         // create the new article
-        Project::create($val_data);
+        $project = Project::create($val_data);
+        $project->technologies()->attach($request->technologies);
         //dd($val_data);
         return to_route('admin.projects.index')->with('message', 'Post Created successfully');
     }
@@ -76,7 +79,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -103,6 +107,11 @@ class ProjectController extends Controller
         }
 
         $project->update($val_data);
+
+        if ($request->has('technologies')) {
+            dd($val_data['technologies']);
+            $project->technologies()->sync($val_data['technologies']);
+        }
 
         //dd($val_data);
         return to_route('admin.projects.index')->with('message', 'project successfully updated!');

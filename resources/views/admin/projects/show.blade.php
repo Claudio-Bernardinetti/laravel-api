@@ -15,6 +15,7 @@
           <h6 class="text-muted"><strong>Title: </strong>{{$project->title}}</h6>
           <p><strong>Description: </strong>{{$project->description}}</p>
           <p><strong>Project type: </strong>{{$project->type ? $project->type->name : 'No Type'}}</p>
+          <p><strong>Tecnology type: </strong>{{$project->tecnology ? $project->tecnology->name : 'No Tecnology Selected'}}</p>
           <a class="btn btn-primary mt-4" href="{{route('admin.projects.index', $project->id)}}" role="button">Go Back</a>
       </div>
     </div>

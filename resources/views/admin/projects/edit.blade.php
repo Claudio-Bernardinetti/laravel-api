@@ -56,6 +56,46 @@
         @error('type_id')
             <p class="text-danger">{{$message}}</p>
         @enderror
+
+        {{-- <div class="mb-3">
+            <label for="technologies" class="form-label">Technology</label>
+            <select multiple class="form-select" name="technologies[]" id="technologies">
+                <option disabled>Select one</option>
+
+                <!-- TODO: Improve validation outputs -->
+                @foreach ($technologies as $technology )
+
+                @if ($errors->any())
+                <option value="{{$technology->id}}" {{in_array($technology->id, old('technologies', []) )  ? 'selected' : ''}}>{{$technology->name}}</option>
+
+                @else
+                <option value="{{$technology->id}}" {{ $project->technologies->contains($technology) ? 'selected' : '' }}>
+                    {{$technology->name}}
+                </option>
+                @endif
+                @endforeach
+            </select>
+            
+            @error('technologies')
+            <div class="text-danger">{{$message}}</div>
+            @enderror
+        </div> --}}
+
+        <div class="mb-3">
+            <label for="technology_id" class="form-label">Technology</label>
+            <select class="form-select @error('technology_id') is-invalid @enderror" name="technology_id" id="technology_id">
+                <option selected disabled>Select a Type</option>
+                <option value="">No Technology Selected</option>
+                @forelse($technologies as $technology)
+                <option value="{{$technology->id}}" {{$type->id == old('technology_id', $project->type_id) ? 'selected' : ''}}>{{$technology->name}}</option>
+                @empty
+
+                @endforelse
+            </select>
+        </div>
+        @error('technology_id')
+            <p class="text-danger">{{$message}}</p>
+        @enderror
         
 
         <div class="mb-3">
