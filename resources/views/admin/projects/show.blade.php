@@ -19,7 +19,7 @@
           <p  class="my-3"><strong>Technology Used: </strong></p>
           @forelse ($project->technologies as $technology)
 
-             <ul >
+            <ul >
               <li>{{$technology->name}}</li>
             </ul>
           

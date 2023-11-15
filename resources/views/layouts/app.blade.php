@@ -89,8 +89,8 @@
             </div> 
         </div> --}}
         
-            <main>
-                {{-- @include('admin.partials.sidebar') --}}
+            <main class="p-0">
+                
                 @yield('content')
             </main>
 </body>
