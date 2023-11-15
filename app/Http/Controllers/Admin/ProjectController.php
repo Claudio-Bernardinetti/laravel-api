@@ -125,9 +125,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        if (!is_null($project->cover_image)) {
+        if ($project->cover_image) {
             Storage::delete($project->cover_image);
         }
+
+        $project->technologies()->detach();
 
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Item successfully deleted!');
