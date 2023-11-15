@@ -99,9 +99,10 @@ class ProjectController extends Controller
         $val_data += ['slug' => $slug];
 
 
-        if ($request->has('cover_image')) {
+        if ($request->has('cover_image') && $project->cover_image) {
+            Storage::delete($project->cover_image);
             $file_path = Storage::put('storage_img', $request->cover_image);
-            $val_data['cover_image'] = asset($file_path);
+            $val_data['cover_image'] = $file_path;
 
             if ($project->preview) {
                 Storage::delete($project->cover_image);

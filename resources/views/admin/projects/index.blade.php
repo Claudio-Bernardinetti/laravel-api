@@ -39,6 +39,7 @@
                 <td> 
                   @if ($project->cover_image)
                   <img width="100" src="{{ strstr($project->cover_image, 'http') ? $project->cover_image : asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
+                  
                   @else
                   N/A
                   @endif 
