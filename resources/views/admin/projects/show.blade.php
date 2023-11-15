@@ -14,7 +14,9 @@
           <h5>ID: {{$project->id}}</h5>
           <h6 class="text-muted"><strong>Title: </strong>{{$project->title}}</h6>
           <p><strong>Description: </strong>{{$project->description}}</p>
-          <p><strong>Project type: </strong>{{$project->type ? $project->type->name : 'No Type'}}</p>
+          <a href="{{$project->github_link}}" target="_blank">{{$project->github_link}}</a> <br>
+          <a href="{{$project->internet_link}}" target="_blank">{{$project->internet_link}}</a>
+          <p class="my-3"><strong>Project type: </strong>{{$project->type ? $project->type->name : 'No Type'}}</p>
           
           <p  class="my-3"><strong>Technology Used: </strong></p>
           @forelse ($project->technologies as $technology)
