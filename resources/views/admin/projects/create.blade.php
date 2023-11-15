@@ -38,7 +38,7 @@
 
         <div class="mb-3">
             <label for="link" class="form-label">github_link</label>
-            <input type="url" class="form-control @error('github_link') is-invalid @enderror" name="github_link" id="github_link" aria-describedby="helpId" placeholder="https:" maxlength="100" required value="{{old('github_link')}}">
+            <input type="url" class="form-control @error('github_link') is-invalid @enderror" name="github_link" id="github_link" aria-describedby="helpId" placeholder="https://github.com/Claudio-Bernardinetti" maxlength="100" required value="{{old('github_link')}}">
             <small id="linkHelper" class="form-text text-muted">Type the URL here</small>
             @error('github_link')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -47,7 +47,7 @@
 
         <div class="mb-3">
             <label for="internet_link" class="form-label">internet_link</label>
-            <input type="url" class="form-control @error('internet_link') is-invalid @enderror" name="internet_link" id="internet_link" aria-describedby="helpId" placeholder="https:" maxlength="100" required value="{{old('internet_link')}}">
+            <input type="url" class="form-control @error('internet_link') is-invalid @enderror" name="internet_link" id="internet_link" aria-describedby="helpId" placeholder="https://www.google.com" maxlength="100" required value="{{old('internet_link')}}">
             <small id="linkHelper" class="form-text text-muted">Type the URL here</small>
             @error('internet_link')
                 <div class="alert alert-danger">{{ $message }}</div>

@@ -8,31 +8,33 @@
       @include('admin.partials.sidebar')
     </div>
       
-    <div class="col-md-9 ">
+    <div class="col-md-9">
       <h2 class="fs-4 text-secondary my-4">
-          {{ __('Welcome Claudio !') }}
+        {{ __('Welcome Claudio !') }}
       </h2>
       @if (session('status'))
       <div class="alert alert-success" role="alert">
-          {{ session('status') }}
+        {{ session('status') }}
       </div>
       @endif
-          
-      <div class="card  mb-3">
-        <h6 class="card-header text-uppercase">Total Projects</h6>
-        <div class="card-body">
-          <strong>Total Projects:</strong> {{ $total_projects }}
+      
+      <div class="row  mx-1">
+        <div class="card col-md-5 p-0 mb-3">
+          <h6 class="card-header text-uppercase">Total Projects</h6>
+          <div class="card-body">
+            <strong>Total Projects:</strong> {{ $total_projects }}
+          </div>
         </div>
-      </div>
 
-      <div class="card  mb-3">
-        <h6 class="card-header text-uppercase">User Counter</h6>
-        <div class="card-body">
-          <strong>Total Users:</strong> {{ $total_users }}
+        <div class="card col-md-5 p-0 mx-4 mb-3">
+          <h6 class="card-header text-uppercase">User Counter</h6>
+          <div class="card-body">
+            <strong>Total Users:</strong> {{ $total_users }}
+          </div>
         </div>
       </div>
       
-      <h4 class="text-muted">Last Projects</h4>
+      <h4 class="text-muted mb-3">Last Projects</h4>
       
       <div class="row">
         @foreach ($last_projects as $project)

@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="link" class="form-label">github_link</label>
-            <input type="url" class="form-control @error('github_link') is-invalid @enderror" name="github_link" id="github_link" aria-describedby="helpId" placeholder="https:" maxlength="100" required value="{{old('github_link')}}">
+            <input type="url" class="form-control @error('github_link') is-invalid @enderror" name="github_link" id="github_link" aria-describedby="helpId" placeholder="https://github.com/Claudio-Bernardinetti" maxlength="100" required value="{{old('github_link')}}">
             <small id="linkHelper" class="form-text text-muted">Type the URL here</small>
             @error('github_link')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -34,7 +34,7 @@
 
         <div class="mb-3">
             <label for="internet_link" class="form-label">internet_link</label>
-            <input type="url" class="form-control @error('internet_link') is-invalid @enderror" name="internet_link" id="internet_link" aria-describedby="helpId" placeholder="https:" maxlength="100" required value="{{old('internet_link')}}">
+            <input type="url" class="form-control @error('internet_link') is-invalid @enderror" name="internet_link" id="internet_link" aria-describedby="helpId" placeholder="https://www.google.com" maxlength="100" required value="{{old('internet_link')}}">
             <small id="linkHelper" class="form-text text-muted">Type the URL here</small>
             @error('internet_link')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -57,47 +57,7 @@
             <p class="text-danger">{{$message}}</p>
         @enderror
 
-        {{-- <div class="mb-3">
-            <label for="technologies" class="form-label">Technology</label>
-            <select multiple class="form-select" name="technologies[]" id="technologies">
-                <option disabled>Select one</option>
-
-                <!-- TODO: Improve validation outputs -->
-                @foreach ($technologies as $technology )
-
-                @if ($errors->any())
-                <option value="{{$technology->id}}" {{in_array($technology->id, old('technologies', []) )  ? 'selected' : ''}}>{{$technology->name}}</option>
-
-                @else
-                <option value="{{$technology->id}}" {{ $project->technologies->contains($technology) ? 'selected' : '' }}>
-                    {{$technology->name}}
-                </option>
-                @endif
-                @endforeach
-            </select>
-            
-            @error('technologies')
-            <div class="text-danger">{{$message}}</div>
-            @enderror
-        </div>
- --}}
         
-
-         {{-- <div class="mb-3">
-            <label for="technology_id" class="form-label">Technology</label>
-            <select class="form-select @error('technology_id') is-invalid @enderror" name="technology_id" id="technology_id">
-                 <option selected disabled>Select a Type</option> 
-                <option value="">No Technology Selected</option>
-                @forelse($technologies as $technology)
-                <option value="{{$technology->id}}" {{$type->id == old('technology_id', $project->type_id) ? 'selected' : ''}}>{{$technology->name}}</option>
-                @empty
-
-                @endforelse
-            </select>
-        </div>
-        @error('technology_id')
-            <p class="text-danger">{{$message}}</p>
-        @enderror --}}
         
         <div class="mb-5">
             <label for="technologies" class="form-label">Technologies</label>
