@@ -2,13 +2,13 @@
 
 @section('content')
 
-<div class="container m-0" style="width: 100%">
-  <div class="row">
+
+  <div class="row m-0">
     <div class="col-md-3 p-0">
       @include('admin.partials.sidebar')
     </div>
       
-    <div class="col-md-9">
+    <div class="col-md-9 ">
       <h2 class="fs-4 text-secondary my-4">
           {{ __('Welcome Claudio !') }}
       </h2>
@@ -28,7 +28,7 @@
       <div class="card  mb-3">
         <h6 class="card-header text-uppercase">User Counter</h6>
         <div class="card-body">
-          <strong>Total User:</strong> {{ $total_users }}
+          <strong>Total Users:</strong> {{ $total_users }}
         </div>
       </div>
       
@@ -38,9 +38,9 @@
         @foreach ($last_projects as $project)
         <div class="col-md-4 mb-3">
           <a class="text-decoration-none" href="{{ route('admin.projects.show', $project) }}">
-            <div class="card h-100">
+            <div class="card shadow-md ">
               <div class="card-header h-100 flex-grow-1 d-flex flex-column justify-content-between">
-                <h3>{{ $project->title }}</h3>
+                <h5>{{ $project->title }}</h5>
                 <p>Project Number: {{ $project->id }}</p>
               </div>
               
@@ -60,6 +60,6 @@
       </div>
   
     </div>
-  </div>
+  
 </div>
 @endsection
