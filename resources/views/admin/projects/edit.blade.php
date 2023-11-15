@@ -60,10 +60,8 @@
         
         
         <div class="mb-5">
-            <label for="technologies" class="form-label">Technologies</label>
+            <label for="technologies" class="form-label">Select a Technology</label>
             <select multiple class="form-select " name="technologies[]" id="technologies">
-                <option selected>Select one</option>
-
                 @foreach ($technologies as $technology)
                     @if ($errors->any())
                         <option value="{{ $technology->id }}"

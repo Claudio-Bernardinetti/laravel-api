@@ -72,9 +72,8 @@
 
         
         <div class="mb-5">
-            <label for="technologies" class="form-label">Technologies</label>
+            <label for="technologies" class="form-label">Select a Technology</label>
             <select multiple class="form-select" name="technologies[]" id="technologies">
-                <option selected>Select one</option>
                 @foreach ($technologies as $technology)
                     <option value="{{ $technology->id }}"
                         {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
