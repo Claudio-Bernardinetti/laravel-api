@@ -4,11 +4,11 @@
 
 
   <div class="row m-0">
-    <div class="col-md-3 p-0">
+    <div class="col-md-2 p-0">
       @include('admin.partials.sidebar')
     </div>
       
-    <div class="col-md-9">
+    <div class="col-md-10">
       <h2 class="fs-4 text-secondary my-4">
         {{ __('Welcome Claudio !') }}
       </h2>
@@ -40,18 +40,18 @@
         @foreach ($last_projects as $project)
         <div class="col-md-4 mb-3">
           <a class="text-decoration-none" href="{{ route('admin.projects.show', $project) }}">
-            <div class="card shadow-md ">
-              <div class="card-header h-100 flex-grow-1 d-flex flex-column justify-content-between">
+            <div class="card shadow-md h-100 ">
+              <div class="card-header h-100 justify-content-between">
                 <h5>{{ $project->title }}</h5>
                 <p>Project Number: {{ $project->id }}</p>
               </div>
               
               <div>
                 @if (str_contains($project->cover_image, 'http'))
-                            <img class="img-fluid card-img-bottom last_project_image"
+                            <img  class="img-fluid card-img-bottom last_project_image"
                             src="{{ asset($project->cover_image) }}" alt="">
                             @else
-                            <img class="img-fluid card-img-bottom last_project_image"
+                            <img  class="img-fluid card-img-bottom last_project_image"
                             src="{{ asset('storage/' . $project->cover_image) }}" alt="">
                             @endif
                     </div>

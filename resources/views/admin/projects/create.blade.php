@@ -29,7 +29,7 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Title Project" maxlength="100" require value="{{old('title')}}">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Project Title" maxlength="100" require value="{{old('title')}}">
             <small id="titleHelper" class="form-text text-muted">Type the Title here</small>
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>

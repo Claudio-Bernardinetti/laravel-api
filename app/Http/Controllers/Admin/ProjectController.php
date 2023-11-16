@@ -90,9 +90,12 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $request->validated();
+        $val_data = $request->validate([
+            'title' => 'required|min:3|max:50',
+            'cover_image' => 'nullable|image|max:600'
+        ]);
 
-        
+
 
         $val_data = $request->all();
         $slug  = Str::slug($request->all()["description"], '-');
