@@ -55,7 +55,7 @@ class ProjectController extends Controller
 
         // add the cover image if passed in the request
         if ($request->has('cover_image')) {
-            $file_path = Storage::put('storage_img', $request->cover_image);
+            $file_path = Storage::disk('public')->put('storage_img', $request->cover_image);
             $val_data['cover_image'] = $file_path;
         }
 
@@ -91,9 +91,20 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $val_data = $request->validate([
-            'title' => 'required|min:3|max:50',
+            'title' => 'required|unique:projects,title,{{$project->id}},id|min:3|max:50',
             'cover_image' => 'nullable|image|max:600'
         ]);
+
+        $project->update($val_data);
+
+        // Verifica se il titolo è uguale a keep
+        /* if ($val_data['title'] === 'keep') {
+            // Non modificare il titolo
+            $project->title = $val_data;
+        } else {
+            // Modificare il titolo
+            $project->title = $val_data['title'];
+        } */
 
 
 

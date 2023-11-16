@@ -15,10 +15,10 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="name" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Projects Title" value="{{old('title', $project->title)}}">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="helpId" placeholder="Projects Title" value="{{ old('title', $project->title) }}">
             <small id="nameHelper" class="form-text text-muted">Type the Title here</small>
-            
+        
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
