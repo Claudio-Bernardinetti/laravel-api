@@ -20,7 +20,7 @@ class ProjectSeeder extends Seeder
             $newproject->title = $faker->realText(50);
             $newproject->github_link = 'https://github.com/Claudio-Bernardinetti';
             $newproject->internet_link = 'https://www.google.com';
-            $newproject->cover_image = 'https://picsum.photos/400/500?random=' . $i + 1;
+            $newproject->cover_image = $faker->imageUrl(360, 360, 'project', true);
             $newproject->slug = Str::slug($newproject->title, '-');
             $newproject->content = $faker->realText();
             $newproject->description = $faker->realText();
