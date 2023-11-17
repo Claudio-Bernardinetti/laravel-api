@@ -97,30 +97,20 @@ class ProjectController extends Controller
 
         $project->update($val_data);
 
-        // Verifica se il titolo è uguale a keep
-        /* if ($val_data['title'] === 'keep') {
-            // Non modificare il titolo
-            $project->title = $val_data;
-        } else {
-            // Modificare il titolo
-            $project->title = $val_data['title'];
-        } */
-
-
-
         $val_data = $request->all();
         $slug  = Str::slug($request->all()["description"], '-');
         $val_data += ['slug' => $slug];
 
 
-        if ($request->has('cover_image') && $project->cover_image) {
-            Storage::delete($project->cover_image);
+        if ($request->has('cover_image')) {
+            // Delete the old image from the storage
+            if ($project->cover_image) {
+                Storage::delete('storage_img', $project->cover_image);
+            }
+        
+            // Store the new image and update the 'cover_image' field
             $file_path = Storage::put('storage_img', $request->cover_image);
             $val_data['cover_image'] = $file_path;
-
-            if ($project->preview) {
-                Storage::delete($project->cover_image);
-            }
         }
 
         $project->update($val_data);

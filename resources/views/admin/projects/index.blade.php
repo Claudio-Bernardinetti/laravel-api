@@ -29,8 +29,9 @@
             <th scope="col">Cover</th>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
-            <th scope="col">Action</th>
+            <th scope="col">Link</th>
             <th scope="col">Descripion</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
