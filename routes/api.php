@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\API\TypeController;
+use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\API\TechnologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Project;
+/* use App\Models\Project;
+use App\Models\Technology;
+use App\Models\Type; */
 
 /* 
 |--------------------------------------------------------------------------
@@ -19,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('projects', function () {
+/* Route::get('projects', function () {
     return response()->json([
         'succsess' => true,
         'claudio' => 'caludio',
@@ -40,4 +45,12 @@ Route::get('technologies', function () {
         'status' => 'success',
         'result' => App\Models\Technology::all()
     ]);
-});
+}); */
+
+Route::get('projects', [ProjectController::class, 'index']);
+Route::get('projects/latest', [ProjectController::class, 'latest']);
+Route::get('projects/{project:id}', [ProjectController::class, 'show']);
+
+
+Route::get('types', [TypeController::class, 'index']);
+Route::get('technologies', [TechnologyController::class, 'index']);
