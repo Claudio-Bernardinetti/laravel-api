@@ -18,7 +18,7 @@
       </div>
       @endif
       
-      <div class="row  mx-1">
+      <div class="row  justify-content-around mx-1">
         <div class="card col-md-5 p-0 mb-3">
           <h6 class="card-header text-uppercase">Total Projects</h6>
           <div class="card-body">

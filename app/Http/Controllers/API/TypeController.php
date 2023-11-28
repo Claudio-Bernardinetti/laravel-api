@@ -19,5 +19,21 @@ class TypeController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $type = Type::with('projects')->where('id', $id)->first();
+        if ($type) {
+            return response()->json([
+                'success' => true,
+                'result' => $type
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'result' => 'Ops! Page not found'
+            ]);
+        }
+    }
+
     
 }

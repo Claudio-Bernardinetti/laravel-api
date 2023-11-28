@@ -19,5 +19,21 @@ class TechnologyController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $technology = Technology::with('projects')->where('id', $id)->first();
+        if ($technology) {
+            return response()->json([
+                'success' => true,
+                'result' => $technology
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'result' => 'Ops! Page not found'
+            ]);
+        }
+    }
+
     
 }
