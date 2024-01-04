@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\TypeController;
 use App\Http\Controllers\API\ProjectController;
 use App\Http\Controllers\API\TechnologyController;
+use App\Http\Controllers\API\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /* use App\Models\Project;
@@ -53,4 +54,9 @@ Route::get('projects/{project:id}', [ProjectController::class, 'show']);
 
 
 Route::get('types', [TypeController::class, 'index']);
+Route::get('types/{type:id}', [TypeController::class, 'show']);
+
 Route::get('technologies', [TechnologyController::class, 'index']);
+Route::get('technologies/{technology:id}', [TechnologyController::class, 'show']);
+
+Route::post('/contacts', [LeadController::class, 'store']);

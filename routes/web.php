@@ -22,6 +22,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mailable', function () {
+    $lead = App\Models\Lead::find(1);
+
+    //    return new App\Mail\NewLeadEmail($lead);
+    return new App\Mail\NewLeadEmailMd($lead);
+});
+
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     /* Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
